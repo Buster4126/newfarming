@@ -37,11 +37,11 @@ module.exports.run = async(bot, message, args) => {
         .setFooter(message.member.displayname, message.author.displayAvatarURL)
         .setTimestamp()
         .setDescription(`**Banned:** ${warnUser} (${warnUser.id})
-        **Banned from:** ${message.author}
+        **Warned from:** ${message.author}
         **Reason: ** ${reason}`)
         .addField("Warns:", warns[warnUser.id].warns);
 
-    var channel = message.member.guild.channels.cache.get("728352911557656677");
+    var channel = message.member.guild.channels.cache.get("731875273041248286");
 
     if (!channel) return("Doesn't exist");
 
