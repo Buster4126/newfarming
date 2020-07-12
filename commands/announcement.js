@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    // !announcement title | bericht | kleur | kanaal
+    // !announcement title | bericht | color | kanaal
 
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You cannot use this");
 
@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
         var embed = new discord.MessageEmbed()
             .setTitle("Use")
             .setColor("GREEN")
-            .setDescription(`Make an announcement. Use this \n !announcement titel ${seperator} bericht ${seperator} kleur ${seperator} kanaal`);
+            .setDescription(`Make an announcement. Use this \n !announcement titel ${seperator} bericht ${seperator} color ${seperator} kanaal`);
 
         return message.reply(embed);
 
@@ -28,14 +28,14 @@ module.exports.run = async (bot, message, args) => {
 
         titel: argsList[0],
         bericht: argsList[1] || ("There is no announce"),
-        kleur: argsList[2].trim(),
+        color: argsList[2].trim(),
         kanaal: argsList[3].trim()
 
     }
 
     var announceEmbed = new discord.MessageEmbed()
         .setTitle("Announcement")
-        .setColor(options.kleur)
+        .setColor(options.color)
         .setDescription(`Announcement from: ${message.author} \n\n ${options.titel} \n\n ${options.bericht}`)
         .setTimestamp();
 
