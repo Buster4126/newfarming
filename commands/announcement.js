@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    // !announcement title | bericht | color | kanaal
+    // !announcement title | message | color | channel
 
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("You cannot use this");
 
@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
         var embed = new discord.MessageEmbed()
             .setTitle("Use")
             .setColor("GREEN")
-            .setDescription(`Make an announcement. Use this \n !announcement titel ${seperator} bericht ${seperator} color ${seperator} kanaal`);
+            .setDescription(`Make an announcement. Use this \n !announcement titel ${seperator} message ${seperator} color ${seperator} channel`);
 
         return message.reply(embed);
 
@@ -27,19 +27,19 @@ module.exports.run = async (bot, message, args) => {
     var options = {
 
         titel: argsList[0],
-        bericht: argsList[1] || ("There is no announce"),
+        message: argsList[1] || ("There is no announce"),
         color: argsList[2].trim(),
-        kanaal: argsList[3].trim()
+        channel: argsList[3].trim()
 
     }
 
     var announceEmbed = new discord.MessageEmbed()
-        .setTitle("Announcement")
+        .setTitle(`${options.titel}`)
         .setColor(options.color)
-        .setDescription(`Announcement from: ${message.author} \n\n ${options.titel} \n\n ${options.bericht}`)
+        .setDescription(`\n\n ${options.message}`)
         .setTimestamp();
 
-    var channel = message.member.guild.channels.cache.find(channels => channels.name === options.kanaal);
+    var channel = message.member.guild.channels.cache.find(channels => channels.name === options.channel);
     if(!channel) return message.reply("This channel doesn't exist");
 
     channel.send(announceEmbed);
