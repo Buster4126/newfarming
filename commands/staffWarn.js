@@ -47,16 +47,7 @@ module.exports.run = async(bot, message, args) => {
 
     channel.send(embed);
 
-    if (warns[warnUser.id].warns == 3) {
 
-        var embed = new discord.MessageEmbed()
-            .setColor("#ff0000")
-            .setDescription("**Attention**")
-            .addField("Message:", "You can only get 1 more warn until you get banned!");
-        
-        message.channel.send(embed);
-        
-    }
 }
 
 module.exports.help = {
